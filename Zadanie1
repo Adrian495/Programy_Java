@@ -1,0 +1,76 @@
+package pl.sda.zadania_dodatkowe_1;
+
+/*
+1. Napisz program, który dla zadanej tablicy typu int zwraca:
+        a. Największą wartość
+        b. Najmniejszą wartość
+        c. Sumę wszystkich wartości
+        d. *Wartość średnią
+        e. *Medianę
+ */
+
+import java.util.Arrays;
+
+public class Zadanie1 {
+    public static void main(String[] args) {
+
+        int[] liczby = new int[]{1, 2, 3, 4, 5, 6, 4, 5, 6, 7, 8, 34, 5, 223, 323, 2323,};
+        najwiekszaWartosc(liczby);
+        najmniejszaWartosc(liczby);
+        System.out.println("Suma wynosi " + suma(liczby));
+        System.out.printf("Średnia wynosi %.1f" + "\n", obliczSrednia(liczby));
+        System.out.println("Mediana wynosi " + mediana(liczby));
+
+    }
+
+    private static double mediana(int[] liczby) {
+        Arrays.sort(liczby);
+        System.out.println("Tabela po uporządkowaniu: ");
+        System.out.println(Arrays.toString(liczby));
+        if (liczby.length % 2 == 0) {
+            double m = (liczby[liczby.length / 2] + liczby[(liczby.length / 2) - 1]) / 2.0;
+            return m;
+        } else {
+            double m = liczby[(liczby.length / 2)];
+            return m;
+        }
+
+
+    }
+
+    private static double obliczSrednia(int[] liczby) {
+        double srednia = suma(liczby) / (double) liczby.length;
+        System.out.println(srednia);
+        return srednia;
+    }
+
+
+    private static int suma(int[] liczby) {
+        int suma = liczby[0];
+        for (int i = 1; i < liczby.length; i++) {
+            suma = suma + liczby[i];
+        }
+        return suma;
+    }
+
+
+    private static void najmniejszaWartosc(int[] liczby) {
+        int a = liczby[0];
+        for (int i = 1; i < liczby.length; i++) {
+            if (a >= liczby[i]) {
+                a = liczby[i];
+            }
+        }
+        System.out.println("Najmniejsza wartość to: " + a);
+    }
+
+    private static void najwiekszaWartosc(int[] liczby) {
+        int a = liczby[0];
+        for (int i = 1; i < liczby.length; i++) {
+            if (a <= liczby[i]) {
+                a = liczby[i];
+            }
+        }
+        System.out.println("Największa wartość to: " + a);
+    }
+}
